@@ -38,7 +38,6 @@ body {
     100% { opacity: 0; visibility: hidden; }
 }
 
-/* TITREME + ZOOM */
 @keyframes zoomShake {
     0% { transform: scale(1); }
     25% { transform: scale(1.05) rotate(1deg); }
@@ -99,7 +98,6 @@ button:hover {
     animation: shake 1s infinite;
 }
 
-/* TITREME */
 @keyframes shake {
     0% { transform: translate(0); }
     25% { transform: translate(2px, -2px); }
@@ -131,7 +129,6 @@ button:hover {
 
 <body>
 
-<!-- AÇILIŞ -->
 <div id="intro">
     <h1>💖 Hoş geldin aşkım 💖</h1>
 </div>
@@ -146,19 +143,17 @@ en gerçek mutluluğumsun 🌹
 İyi ki varsın Sedanur ❤️
 </p>
 
-<!-- Müzik -->
+<!-- MÜZİK -->
 <audio id="music" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <button class="music-btn" onclick="toggleMusic()">🎵 Müzik Aç / Kapat</button>
 
-<!-- Fotoğraflar -->
 <div class="gallery">
     <img src="img1.jpg"><img src="img2.jpg"><img src="img3.jpg">
     <img src="img4.jpg"><img src="img5.jpg"><img src="img6.jpg">
     <img src="img7.jpg"><img src="img8.jpg"><img src="img9.jpg">
-    <img src="img10.jpg">
 </div>
 
 <button onclick="showLove()">💖 Beni seviyorsan buraya tıkla 💖</button>
@@ -170,12 +165,22 @@ Seni çok seviyorum ❤️<br>
 
 <script>
 const music = document.getElementById("music");
+let started = false;
+
+function startMusic() {
+    if (!started) {
+        music.play();
+        started = true;
+    }
+}
 
 function toggleMusic() {
+    startMusic();
     music.paused ? music.play() : music.pause();
 }
 
 function showLove() {
+    startMusic();
     document.getElementById("message").style.display = "block";
     for (let i = 0; i < 25; i++) createName();
 }
@@ -187,7 +192,6 @@ function createName() {
     name.style.left = Math.random() * 100 + "vw";
     name.style.animationDuration = (Math.random() * 2 + 3) + "s";
     document.body.appendChild(name);
-
     setTimeout(() => name.remove(), 4000);
 }
 </script>
