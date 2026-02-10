@@ -117,7 +117,8 @@ Fotoğraflarımız, kelimelerim ve kalbim burada.<br><br>
 İyi ki varsın, iyi ki benimlesin ❤️
 </div>
 
-<audio id="music" loop>
+<!-- 🎵 MÜZİK -->
+<audio id="music" preload="auto" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
@@ -144,31 +145,40 @@ Fotoğraflarımız, kelimelerim ve kalbim burada.<br><br>
 </div>
 
 <script>
-/* 🎵 MÜZİK – MOBİL GARANTİ */
+/* 🎵 MÜZİK – %100 MOBİL UYUMLU */
 const music = document.getElementById("music");
-let userInteracted = false;
+let started = false;
 
-function toggleMusic(){
-    if(!userInteracted){
-        music.play().catch(()=>{});
-        userInteracted = true;
-    }else{
-        music.paused ? music.play() : music.pause();
+function toggleMusic() {
+    if (!started) {
+        music.muted = false;
+        music.volume = 1;
+        music.play().then(() => {
+            started = true;
+        }).catch(() => {});
+        return;
+    }
+
+    if (music.paused) {
+        music.play();
+    } else {
+        music.pause();
     }
 }
 
 /* MESAJ */
 function showLove(){
-    document.getElementById("message").style.display="block";
-    if(!userInteracted){
-        music.play().catch(()=>{});
-        userInteracted = true;
+    document.getElementById("message").style.display = "block";
+
+    // ilk etkileşim garantisi
+    if (!started) {
+        music.play().then(() => started = true).catch(()=>{});
     }
 }
 
 /* HAFİF FADE-IN */
-const cards=document.querySelectorAll(".card");
-const obs=new IntersectionObserver(entries=>{
+const cards = document.querySelectorAll(".card");
+const obs = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
         if(e.isIntersecting) e.target.classList.add("show");
     });
