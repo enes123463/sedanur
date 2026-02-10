@@ -15,6 +15,38 @@ body {
     overflow-x: hidden;
 }
 
+/* AÇILIŞ EKRANI */
+#intro {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #ff2e63, #ff7eb3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: introFade 2.5s forwards;
+}
+
+#intro h1 {
+    font-size: 40px;
+    animation: zoomShake 2s infinite;
+}
+
+@keyframes introFade {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+/* TITREME + ZOOM */
+@keyframes zoomShake {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.05) rotate(1deg); }
+    50% { transform: scale(1) rotate(-1deg); }
+    75% { transform: scale(1.05) rotate(1deg); }
+    100% { transform: scale(1); }
+}
+
 h1 {
     margin-top: 20px;
     font-size: 36px;
@@ -99,6 +131,11 @@ button:hover {
 
 <body>
 
+<!-- AÇILIŞ -->
+<div id="intro">
+    <h1>💖 Hoş geldin aşkım 💖</h1>
+</div>
+
 <h1>❤️ Sedanur & Bilal ❤️</h1>
 
 <p>
@@ -140,10 +177,7 @@ function toggleMusic() {
 
 function showLove() {
     document.getElementById("message").style.display = "block";
-
-    for (let i = 0; i < 25; i++) {
-        createName();
-    }
+    for (let i = 0; i < 25; i++) createName();
 }
 
 function createName() {
@@ -154,9 +188,7 @@ function createName() {
     name.style.animationDuration = (Math.random() * 2 + 3) + "s";
     document.body.appendChild(name);
 
-    setTimeout(() => {
-        name.remove();
-    }, 4000);
+    setTimeout(() => name.remove(), 4000);
 }
 </script>
 
