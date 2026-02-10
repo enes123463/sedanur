@@ -61,7 +61,18 @@ body::before{
 }
 
 h1{margin:20px;font-size:34px;}
-p{margin:15px;font-size:18px;line-height:1.6}
+p{margin:15px;font-size:18px;line-height:1.7}
+
+/* AŞK MEKTUBU */
+.love-letter{
+    margin:30px 20px;
+    padding:25px;
+    border-radius:25px;
+    background:#ffffff20;
+    backdrop-filter:blur(6px);
+    box-shadow:0 15px 30px rgba(0,0,0,.3);
+    font-size:18px;
+}
 
 /* GALERİ */
 .gallery{
@@ -94,9 +105,17 @@ p{margin:15px;font-size:18px;line-height:1.6}
     box-shadow:0 0 25px #ffb6c1;
 }
 .card p{
-    margin-top:12px;
+    margin-top:14px;
     font-size:16px;
     font-style:italic;
+    line-height:1.6;
+}
+
+/* DUYGU BLOĞU */
+.quote{
+    margin:25px;
+    font-size:19px;
+    opacity:.9;
 }
 
 /* BUTON */
@@ -124,13 +143,14 @@ button{
     to{bottom:100%;opacity:0;}
 }
 
-/* SON SÖZ */
+/* SON MESAJ */
 .final-text{
-    margin:30px 20px;
-    padding:20px;
-    border-radius:20px;
+    margin:40px 20px;
+    padding:25px;
+    border-radius:25px;
     background:#ffffff1f;
-    font-size:18px;
+    font-size:19px;
+    line-height:1.7;
 }
 
 /* İMZA */
@@ -150,42 +170,65 @@ button{
 
 <body>
 
-<!-- AÇILIŞ -->
 <div id="intro">
     <h1 id="typeText"></h1>
 </div>
 
 <h1>❤️ Sedanur & Bilal ❤️</h1>
 
-<p>
-Sen benim en güzel hikayemsin…  
-İyi ki varsın Sedanur ❤️
-</p>
+<div class="love-letter">
+Sedanur…  
+Bu site sadece renklerden, yazılardan ve fotoğraflardan oluşmuyor.  
+Burada benim sana olan sevgim, kalbimde büyüyen hislerim var.  
+Gülüşünle güzelleşen günlerim, adını duyduğumda hızlanan kalbim var.  
+İyi ki hayatımdasın, iyi ki benimlesin ❤️
+</div>
 
-<!-- MÜZİK -->
 <audio id="music" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <button onclick="toggleMusic()">🎵 Müzik Aç / Kapat</button>
 
-<!-- GALERİ -->
 <div class="gallery">
-    <div class="card"><img src="img1.jpg"><p>Kalbim seni seçti.</p></div>
-    <div class="card"><img src="img2.jpg"><p>Gülüşün huzurum.</p></div>
-    <div class="card"><img src="img3.jpg"><p>Adın kalbimde.</p></div>
-    <div class="card"><img src="img4.jpg"><p>Sen benim iyi ki’msin.</p></div>
-    <div class="card"><img src="img5.jpg"><p>Yanımda olman yeter.</p></div>
-    <div class="card"><img src="img6.jpg"><p>Aşk sensin.</p></div>
-    <div class="card"><img src="img7.jpg"><p>Her gün seni seçerim.</p></div>
-    <div class="card"><img src="img8.jpg"><p>Kalbim sende.</p></div>
-    <div class="card"><img src="img9.jpg"><p>Bir ömür sen.</p></div>
+
+<div class="card"><img src="img1.jpg">
+<p>Kalbim seni seçti… çünkü başka hiçbir yerde bu kadar huzur bulmadım.</p></div>
+
+<div class="card"><img src="img2.jpg">
+<p>Gülüşün, en karanlık günlerimi bile aydınlatmaya yetiyor.</p></div>
+
+<div class="quote">“Bazen bir bakış, bin kelimeden daha fazlasını anlatır…”</div>
+
+<div class="card"><img src="img3.jpg">
+<p>Adını kalbime yazdım, silinmesin diye her gün yeniden sevdim.</p></div>
+
+<div class="card"><img src="img4.jpg">
+<p>Sen benim sadece bugünüm değil, yarınım, hayalim, umudumsun.</p></div>
+
+<div class="quote">“Aşk; yan yana olmak değil, kalp kalbe olmaktır.”</div>
+
+<div class="card"><img src="img5.jpg">
+<p>Yanımda olman yeter… gerisi zaten kendiliğinden güzel.</p></div>
+
+<div class="card"><img src="img6.jpg">
+<p>Aşk sensin… başka bir tarifi yok.</p></div>
+
+<div class="card"><img src="img7.jpg">
+<p>Her sabah yeniden seni seçecek kadar çok seviyorum.</p></div>
+
+<div class="card"><img src="img8.jpg">
+<p>Kalbimin attığı her yerde sen varsın.</p></div>
+
+<div class="card"><img src="img9.jpg">
+<p>Bir ömür sen… başka bir dileğim yok.</p></div>
+
 </div>
 
 <div class="final-text">
-Bu site bir kod değil…  
-Bir kalbin başka bir kalbe yazdığı  
-<strong>en güzel mektup</strong> 💖
+Bu sayfa burada bitiyor olabilir…  
+Ama sana olan sevgim, her gün biraz daha büyüyerek devam ediyor.  
+İyi ki varsın, iyi ki benimlesin ❤️
 </div>
 
 <button onclick="showLove()">💖 Beni seviyorsan buraya tıkla 💖</button>
@@ -195,11 +238,10 @@ Seni çok seviyorum ❤️
 </div>
 
 <div class="footer">
-    <span>Abdurrahman Demir</span> tarafından sevgiyle yapıldı 💖
+<span>Abdurrahman Demir</span> tarafından sevgiyle yapıldı 💖
 </div>
 
 <script>
-/* TYPEWRITER */
 const text="💖 Hoş geldin aşkım 💖";
 let i=0;
 function typeWriter(){
@@ -211,13 +253,11 @@ function typeWriter(){
 }
 typeWriter();
 
-/* MÜZİK */
 const music=document.getElementById("music");
 function toggleMusic(){
     music.paused ? music.play() : music.pause();
 }
 
-/* İSİMLER */
 function showLove(){
     document.getElementById("message").style.display="block";
     for(let i=0;i<15;i++) createName();
@@ -231,7 +271,6 @@ function createName(){
     setTimeout(()=>d.remove(),4000);
 }
 
-/* FADE / SLIDE */
 const cards=document.querySelectorAll('.card');
 const observer=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
@@ -243,5 +282,3 @@ cards.forEach(c=>observer.observe(c));
 
 </body>
 </html>
-
-
