@@ -15,20 +15,18 @@ body{
     overflow-x:hidden;
 }
 
-/* ARKA PLAN IŞIK */
-body::before{
-    content:"";
+/* 💕 KALP PARÇACIKLARI */
+.heart{
     position:fixed;
-    inset:0;
-    background:
-      radial-gradient(circle at 20% 30%, #ffffff33, transparent 40%),
-      radial-gradient(circle at 80% 70%, #ffffff22, transparent 40%);
-    animation: bgMove 20s infinite alternate;
+    bottom:-20px;
+    color:#ffb6c1;
+    font-size:18px;
+    animation:floatHeart linear forwards;
     pointer-events:none;
 }
-@keyframes bgMove{
-    from{transform:translateY(0);}
-    to{transform:translateY(-40px);}
+@keyframes floatHeart{
+    from{opacity:1; transform:translateY(0);}
+    to{opacity:0; transform:translateY(-120vh);}
 }
 
 /* AÇILIŞ */
@@ -53,15 +51,7 @@ body::before{
     white-space:nowrap;
     overflow:hidden;
     border-right:3px solid #fff;
-    animation: blink .8s infinite;
 }
-@keyframes blink{
-    0%,100%{border-color:transparent;}
-    50%{border-color:white;}
-}
-
-h1{margin:20px;font-size:34px;}
-p{margin:15px;font-size:18px;line-height:1.7}
 
 /* AŞK MEKTUBU */
 .love-letter{
@@ -72,6 +62,7 @@ p{margin:15px;font-size:18px;line-height:1.7}
     backdrop-filter:blur(6px);
     box-shadow:0 15px 30px rgba(0,0,0,.3);
     font-size:18px;
+    line-height:1.7;
 }
 
 /* GALERİ */
@@ -87,35 +78,18 @@ p{margin:15px;font-size:18px;line-height:1.7}
     border-radius:22px;
     padding:14px;
     box-shadow:0 12px 25px rgba(0,0,0,.35);
-    opacity:0;
-    transform:translateY(40px);
-    transition:all 1s ease;
 }
-.card.show{
-    opacity:1;
-    transform:translateY(0);
-}
+
 .card img{
     width:100%;
     border-radius:16px;
-    transition:.6s ease;
 }
-.card:hover img{
-    transform:scale(1.05);
-    box-shadow:0 0 25px #ffb6c1;
-}
+
 .card p{
     margin-top:14px;
     font-size:16px;
-    font-style:italic;
     line-height:1.6;
-}
-
-/* DUYGU BLOĞU */
-.quote{
-    margin:25px;
-    font-size:19px;
-    opacity:.9;
+    min-height:60px;
 }
 
 /* BUTON */
@@ -128,19 +102,6 @@ button{
     background:#ff2e63;
     color:white;
     cursor:pointer;
-}
-
-/* UÇAN İSİMLER */
-.name-float{
-    position:fixed;
-    bottom:-20px;
-    font-size:22px;
-    font-weight:bold;
-    animation:float 4s linear forwards;
-}
-@keyframes float{
-    from{opacity:1;}
-    to{bottom:100%;opacity:0;}
 }
 
 /* SON MESAJ */
@@ -159,11 +120,9 @@ button{
     padding:25px;
     font-size:14px;
     opacity:.85;
-    text-shadow:0 0 10px #ffb6c1;
 }
 .footer span{
     font-weight:600;
-    color:#ffe3ec;
 }
 </style>
 </head>
@@ -176,12 +135,11 @@ button{
 
 <h1>❤️ Sedanur & Bilal ❤️</h1>
 
-<div class="love-letter">
+<div class="love-letter type-on-scroll">
 Sedanur…  
-Bu site sadece renklerden, yazılardan ve fotoğraflardan oluşmuyor.  
-Burada benim sana olan sevgim, kalbimde büyüyen hislerim var.  
-Gülüşünle güzelleşen günlerim, adını duyduğumda hızlanan kalbim var.  
-İyi ki hayatımdasın, iyi ki benimlesin ❤️
+Bu sayfada yazan her kelime, kalbimde sana ait.  
+Gülüşünle güzelleşen günlerim, sesinle huzur bulan kalbim var.  
+İyi ki varsın, iyi ki benimlesin ❤️
 </div>
 
 <audio id="music" loop>
@@ -192,43 +150,57 @@ Gülüşünle güzelleşen günlerim, adını duyduğumda hızlanan kalbim var.
 
 <div class="gallery">
 
-<div class="card"><img src="img1.jpg">
-<p>Kalbim seni seçti… çünkü başka hiçbir yerde bu kadar huzur bulmadım.</p></div>
+<div class="card">
+<img src="img1.jpg">
+<p class="type-on-scroll">Kalbim seni seçti… çünkü başka hiçbir yerde bu kadar huzur bulmadım.</p>
+</div>
 
-<div class="card"><img src="img2.jpg">
-<p>Gülüşün, en karanlık günlerimi bile aydınlatmaya yetiyor.</p></div>
+<div class="card">
+<img src="img2.jpg">
+<p class="type-on-scroll">Gülüşün, en karanlık günlerimi bile aydınlatmaya yetiyor.</p>
+</div>
 
-<div class="quote">“Bazen bir bakış, bin kelimeden daha fazlasını anlatır…”</div>
+<div class="card">
+<img src="img3.jpg">
+<p class="type-on-scroll">Adını kalbime yazdım, silinmesin diye her gün yeniden sevdim.</p>
+</div>
 
-<div class="card"><img src="img3.jpg">
-<p>Adını kalbime yazdım, silinmesin diye her gün yeniden sevdim.</p></div>
+<div class="card">
+<img src="img4.jpg">
+<p class="type-on-scroll">Sen benim sadece bugünüm değil, yarınım, hayalim, umudumsun.</p>
+</div>
 
-<div class="card"><img src="img4.jpg">
-<p>Sen benim sadece bugünüm değil, yarınım, hayalim, umudumsun.</p></div>
+<div class="card">
+<img src="img5.jpg">
+<p class="type-on-scroll">Yanımda olman yeter… gerisi zaten kendiliğinden güzel.</p>
+</div>
 
-<div class="quote">“Aşk; yan yana olmak değil, kalp kalbe olmaktır.”</div>
+<div class="card">
+<img src="img6.jpg">
+<p class="type-on-scroll">Aşk sensin… başka bir tarifi yok.</p>
+</div>
 
-<div class="card"><img src="img5.jpg">
-<p>Yanımda olman yeter… gerisi zaten kendiliğinden güzel.</p></div>
+<div class="card">
+<img src="img7.jpg">
+<p class="type-on-scroll">Her sabah yeniden seni seçecek kadar çok seviyorum.</p>
+</div>
 
-<div class="card"><img src="img6.jpg">
-<p>Aşk sensin… başka bir tarifi yok.</p></div>
+<div class="card">
+<img src="img8.jpg">
+<p class="type-on-scroll">Kalbimin attığı her yerde sen varsın.</p>
+</div>
 
-<div class="card"><img src="img7.jpg">
-<p>Her sabah yeniden seni seçecek kadar çok seviyorum.</p></div>
-
-<div class="card"><img src="img8.jpg">
-<p>Kalbimin attığı her yerde sen varsın.</p></div>
-
-<div class="card"><img src="img9.jpg">
-<p>Bir ömür sen… başka bir dileğim yok.</p></div>
+<div class="card">
+<img src="img9.jpg">
+<p class="type-on-scroll">Bir ömür sen… başka bir dileğim yok.</p>
+</div>
 
 </div>
 
-<div class="final-text">
-Bu sayfa burada bitiyor olabilir…  
+<div class="final-text type-on-scroll">
+Bu site burada bitiyor olabilir…  
 Ama sana olan sevgim, her gün biraz daha büyüyerek devam ediyor.  
-İyi ki varsın, iyi ki benimlesin ❤️
+İyi ki varsın ❤️
 </div>
 
 <button onclick="showLove()">💖 Beni seviyorsan buraya tıkla 💖</button>
@@ -242,42 +214,59 @@ Seni çok seviyorum ❤️
 </div>
 
 <script>
-const text="💖 Hoş geldin aşkım 💖";
-let i=0;
-function typeWriter(){
-    if(i<text.length){
-        document.getElementById("typeText").innerHTML+=text.charAt(i);
-        i++;
-        setTimeout(typeWriter,90);
+/* TYPEWRITER AÇILIŞ */
+const introText="💖 Hoş geldin aşkım 💖";
+let it=0;
+function typeIntro(){
+    if(it<introText.length){
+        document.getElementById("typeText").innerHTML+=introText.charAt(it);
+        it++;
+        setTimeout(typeIntro,90);
     }
 }
-typeWriter();
+typeIntro();
 
+/* KALP PARÇACIKLARI */
+setInterval(()=>{
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="💖";
+    h.style.left=Math.random()*100+"vw";
+    h.style.fontSize=(14+Math.random()*10)+"px";
+    h.style.animationDuration=(6+Math.random()*4)+"s";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),10000);
+},600);
+
+/* MÜZİK */
 const music=document.getElementById("music");
 function toggleMusic(){
     music.paused ? music.play() : music.pause();
 }
 
+/* SCROLL TYPEWRITER */
+const elements=document.querySelectorAll(".type-on-scroll");
+const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting && !e.target.dataset.done){
+            e.target.dataset.done=true;
+            const text=e.target.innerText;
+            e.target.innerText="";
+            let i=0;
+            const interval=setInterval(()=>{
+                e.target.innerText+=text.charAt(i);
+                i++;
+                if(i>=text.length) clearInterval(interval);
+            },35);
+        }
+    });
+},{threshold:.4});
+elements.forEach(el=>obs.observe(el));
+
+/* BUTON */
 function showLove(){
     document.getElementById("message").style.display="block";
-    for(let i=0;i<15;i++) createName();
 }
-function createName(){
-    const d=document.createElement("div");
-    d.className="name-float";
-    d.innerHTML="💕 Sedanur ❤️ Bilal 💕";
-    d.style.left=Math.random()*100+"vw";
-    document.body.appendChild(d);
-    setTimeout(()=>d.remove(),4000);
-}
-
-const cards=document.querySelectorAll('.card');
-const observer=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-        if(e.isIntersecting) e.target.classList.add('show');
-    });
-},{threshold:.2});
-cards.forEach(c=>observer.observe(c));
 </script>
 
 </body>
