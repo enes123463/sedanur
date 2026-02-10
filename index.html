@@ -6,194 +6,239 @@
 <title>Sedanur ❤️ Bilal</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #ff5f6d, #ffc371);
-    text-align: center;
-    color: white;
-    overflow-x: hidden;
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#ff5f6d,#ffc371);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
 }
 
-/* AÇILIŞ EKRANI */
-#intro {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(135deg, #ff2e63, #ff7eb3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    animation: introFade 2.5s forwards;
+/* ARKA PLAN IŞIK */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(circle at 20% 30%, #ffffff33, transparent 40%),
+      radial-gradient(circle at 80% 70%, #ffffff22, transparent 40%);
+    animation: bgMove 20s infinite alternate;
+    pointer-events:none;
+}
+@keyframes bgMove{
+    from{transform:translateY(0);}
+    to{transform:translateY(-40px);}
 }
 
-#intro h1 {
-    font-size: 40px;
-    animation: zoomShake 2s infinite;
+/* AÇILIŞ */
+#intro{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#ff2e63,#ff7eb3);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    animation:introFade 3s forwards;
+}
+@keyframes introFade{
+    0%,85%{opacity:1;}
+    100%{opacity:0;visibility:hidden;}
 }
 
-@keyframes introFade {
-    0% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { opacity: 0; visibility: hidden; }
+/* TYPEWRITER */
+#typeText{
+    font-size:40px;
+    white-space:nowrap;
+    overflow:hidden;
+    border-right:3px solid #fff;
+    animation: blink .8s infinite;
+}
+@keyframes blink{
+    0%,100%{border-color:transparent;}
+    50%{border-color:white;}
 }
 
-@keyframes zoomShake {
-    0% { transform: scale(1); }
-    25% { transform: scale(1.05) rotate(1deg); }
-    50% { transform: scale(1) rotate(-1deg); }
-    75% { transform: scale(1.05) rotate(1deg); }
-    100% { transform: scale(1); }
+h1{margin:20px;font-size:34px;}
+p{margin:15px;font-size:18px;line-height:1.6}
+
+/* GALERİ */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:22px;
+    padding:25px;
 }
 
-h1 {
-    margin-top: 20px;
-    font-size: 36px;
-    animation: shake 1.5s infinite;
+.card{
+    background:#ffffff1f;
+    border-radius:22px;
+    padding:14px;
+    box-shadow:0 12px 25px rgba(0,0,0,.35);
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 1s ease;
+}
+.card.show{
+    opacity:1;
+    transform:translateY(0);
+}
+.card img{
+    width:100%;
+    border-radius:16px;
+    transition:.6s ease;
+}
+.card:hover img{
+    transform:scale(1.05);
+    box-shadow:0 0 25px #ffb6c1;
+}
+.card p{
+    margin-top:12px;
+    font-size:16px;
+    font-style:italic;
 }
 
-p {
-    font-size: 18px;
-    margin: 15px;
-    line-height: 1.6;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
-    padding: 15px;
-}
-
-.gallery img {
-    width: 100%;
-    border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-}
-
-button {
-    padding: 14px 25px;
-    font-size: 18px;
-    border: none;
-    border-radius: 30px;
-    background: #ff2e63;
-    color: white;
-    cursor: pointer;
-    margin: 15px;
-}
-
-button:hover {
-    background: #ff1744;
-}
-
-.music-btn {
-    background: #ffffff33;
-    border: 1px solid white;
-}
-
-#message {
-    font-size: 26px;
-    display: none;
-    margin-bottom: 30px;
-    animation: shake 1s infinite;
-}
-
-@keyframes shake {
-    0% { transform: translate(0); }
-    25% { transform: translate(2px, -2px); }
-    50% { transform: translate(-2px, 2px); }
-    75% { transform: translate(2px, 2px); }
-    100% { transform: translate(0); }
+/* BUTON */
+button{
+    margin:15px;
+    padding:14px 28px;
+    font-size:18px;
+    border:none;
+    border-radius:30px;
+    background:#ff2e63;
+    color:white;
+    cursor:pointer;
 }
 
 /* UÇAN İSİMLER */
-.name-float {
-    position: fixed;
-    bottom: -20px;
-    font-size: 22px;
-    font-weight: bold;
-    animation: floatName 4s linear forwards, shake 0.4s infinite;
-    text-shadow: 0 0 10px pink;
+.name-float{
+    position:fixed;
+    bottom:-20px;
+    font-size:22px;
+    font-weight:bold;
+    animation:float 4s linear forwards;
+}
+@keyframes float{
+    from{opacity:1;}
+    to{bottom:100%;opacity:0;}
 }
 
-@keyframes floatName {
-    from { opacity: 1; }
-    to {
-        bottom: 100%;
-        opacity: 0;
-        transform: translateX(100px);
-    }
+/* SON SÖZ */
+.final-text{
+    margin:30px 20px;
+    padding:20px;
+    border-radius:20px;
+    background:#ffffff1f;
+    font-size:18px;
+}
+
+/* İMZA */
+.footer{
+    margin-top:50px;
+    padding:25px;
+    font-size:14px;
+    opacity:.85;
+    text-shadow:0 0 10px #ffb6c1;
+}
+.footer span{
+    font-weight:600;
+    color:#ffe3ec;
 }
 </style>
 </head>
 
 <body>
 
+<!-- AÇILIŞ -->
 <div id="intro">
-    <h1>💖 Hoş geldin aşkım 💖</h1>
+    <h1 id="typeText"></h1>
 </div>
 
 <h1>❤️ Sedanur & Bilal ❤️</h1>
 
 <p>
-Hayat bana seni verdiği gün  
-kalbim ilk defa “tamam” dedi…  
-Sen benim en güzel şansım,  
-en gerçek mutluluğumsun 🌹  
+Sen benim en güzel hikayemsin…  
 İyi ki varsın Sedanur ❤️
 </p>
 
 <!-- MÜZİK -->
 <audio id="music" loop>
-    <source src="music.mp3" type="audio/mpeg">
+    <source src="./aşkım/music.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-btn" onclick="toggleMusic()">🎵 Müzik Aç / Kapat</button>
+<button onclick="toggleMusic()">🎵 Müzik Aç / Kapat</button>
 
+<!-- GALERİ -->
 <div class="gallery">
-    <img src="img1.jpg"><img src="img2.jpg"><img src="img3.jpg">
-    <img src="img4.jpg"><img src="img5.jpg"><img src="img6.jpg">
-    <img src="img7.jpg"><img src="img8.jpg"><img src="img9.jpg">
+    <div class="card"><img src="./aşkım/img1.jpg"><p>Kalbim seni seçti.</p></div>
+    <div class="card"><img src="./aşkım/img2.jpg"><p>Gülüşün huzurum.</p></div>
+    <div class="card"><img src="./aşkım/img3.jpg"><p>Adın kalbimde.</p></div>
+    <div class="card"><img src="./aşkım/img4.jpg"><p>Sen benim iyi ki’msin.</p></div>
+    <div class="card"><img src="./aşkım/img5.jpg"><p>Yanımda olman yeter.</p></div>
+    <div class="card"><img src="./aşkım/img6.jpg"><p>Aşk sensin.</p></div>
+    <div class="card"><img src="./aşkım/img7.jpg"><p>Her gün seni seçerim.</p></div>
+    <div class="card"><img src="./aşkım/img8.jpg"><p>Kalbim sende.</p></div>
+    <div class="card"><img src="./aşkım/img9.jpg"><p>Bir ömür sen.</p></div>
+</div>
+
+<div class="final-text">
+Bu site bir kod değil…  
+Bir kalbin başka bir kalbe yazdığı  
+<strong>en güzel mektup</strong> 💖
 </div>
 
 <button onclick="showLove()">💖 Beni seviyorsan buraya tıkla 💖</button>
 
-<div id="message">
-Seni çok seviyorum ❤️<br>
-İyi ki varsın Sedanur 🌹
+<div id="message" style="display:none;font-size:26px;">
+Seni çok seviyorum ❤️
+</div>
+
+<div class="footer">
+    <span>Abdurrahman Demir</span> tarafından sevgiyle yapıldı 💖
 </div>
 
 <script>
-const music = document.getElementById("music");
-let started = false;
-
-function startMusic() {
-    if (!started) {
-        music.play();
-        started = true;
+/* TYPEWRITER */
+const text="💖 Hoş geldin aşkım 💖";
+let i=0;
+function typeWriter(){
+    if(i<text.length){
+        document.getElementById("typeText").innerHTML+=text.charAt(i);
+        i++;
+        setTimeout(typeWriter,90);
     }
 }
+typeWriter();
 
-function toggleMusic() {
-    startMusic();
+/* MÜZİK */
+const music=document.getElementById("music");
+function toggleMusic(){
     music.paused ? music.play() : music.pause();
 }
 
-function showLove() {
-    startMusic();
-    document.getElementById("message").style.display = "block";
-    for (let i = 0; i < 25; i++) createName();
+/* İSİMLER */
+function showLove(){
+    document.getElementById("message").style.display="block";
+    for(let i=0;i<15;i++) createName();
+}
+function createName(){
+    const d=document.createElement("div");
+    d.className="name-float";
+    d.innerHTML="💕 Sedanur ❤️ Bilal 💕";
+    d.style.left=Math.random()*100+"vw";
+    document.body.appendChild(d);
+    setTimeout(()=>d.remove(),4000);
 }
 
-function createName() {
-    const name = document.createElement("div");
-    name.className = "name-float";
-    name.innerHTML = "💕 Sedanur ❤️ Bilal 💕";
-    name.style.left = Math.random() * 100 + "vw";
-    name.style.animationDuration = (Math.random() * 2 + 3) + "s";
-    document.body.appendChild(name);
-    setTimeout(() => name.remove(), 4000);
-}
+/* FADE / SLIDE */
+const cards=document.querySelectorAll('.card');
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add('show');
+    });
+},{threshold:.2});
+cards.forEach(c=>observer.observe(c));
 </script>
 
 </body>
