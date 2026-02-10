@@ -12,113 +12,89 @@ body{
     background:linear-gradient(135deg,#ff5f6d,#ffc371);
     color:white;
     text-align:center;
-    overflow-x:hidden;
 }
 
-/* 💕 KALP PARÇACIKLARI */
-.heart{
-    position:fixed;
-    bottom:-20px;
-    color:#ffb6c1;
-    font-size:18px;
-    animation:floatHeart linear forwards;
-    pointer-events:none;
-}
-@keyframes floatHeart{
-    from{opacity:1; transform:translateY(0);}
-    to{opacity:0; transform:translateY(-120vh);}
-}
-
-/* AÇILIŞ */
+/* GİRİŞ */
 #intro{
-    position:fixed;
-    inset:0;
+    padding:80px 20px 60px;
     background:linear-gradient(135deg,#ff2e63,#ff7eb3);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    z-index:9999;
-    animation:introFade 3s forwards;
+    animation:introFade 1.5s ease;
 }
 @keyframes introFade{
-    0%,85%{opacity:1;}
-    100%{opacity:0;visibility:hidden;}
+    from{opacity:0; transform:translateY(-20px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
-/* TYPEWRITER */
-#typeText{
-    font-size:40px;
-    white-space:nowrap;
-    overflow:hidden;
-    border-right:3px solid #fff;
+#intro h1{
+    font-size:34px;
+    margin-bottom:10px;
+}
+#intro p{
+    font-size:18px;
+    opacity:.95;
 }
 
 /* AŞK MEKTUBU */
 .love-letter{
-    margin:30px 20px;
-    padding:25px;
-    border-radius:25px;
-    background:#ffffff20;
-    backdrop-filter:blur(6px);
-    box-shadow:0 15px 30px rgba(0,0,0,.3);
-    font-size:18px;
+    margin:25px 15px;
+    padding:20px;
+    border-radius:20px;
+    background:rgba(255,255,255,.18);
+    font-size:17px;
     line-height:1.7;
 }
 
 /* GALERİ */
 .gallery{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:22px;
-    padding:25px;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:14px;
+    padding:15px;
 }
 
 .card{
-    background:#ffffff1f;
-    border-radius:22px;
-    padding:14px;
-    box-shadow:0 12px 25px rgba(0,0,0,.35);
+    background:rgba(255,255,255,.18);
+    border-radius:18px;
+    padding:10px;
+    opacity:0;
+    transform:translateY(20px);
+    transition:.6s ease;
 }
-
+.card.show{
+    opacity:1;
+    transform:translateY(0);
+}
 .card img{
     width:100%;
-    border-radius:16px;
+    border-radius:14px;
 }
-
 .card p{
-    margin-top:14px;
-    font-size:16px;
-    line-height:1.6;
-    min-height:60px;
+    font-size:14px;
+    margin-top:8px;
 }
 
 /* BUTON */
 button{
-    margin:15px;
-    padding:14px 28px;
-    font-size:18px;
+    margin:18px;
+    padding:14px 26px;
+    font-size:16px;
     border:none;
-    border-radius:30px;
+    border-radius:28px;
     background:#ff2e63;
     color:white;
-    cursor:pointer;
 }
 
-/* SON MESAJ */
-.final-text{
-    margin:40px 20px;
-    padding:25px;
-    border-radius:25px;
-    background:#ffffff1f;
-    font-size:19px;
-    line-height:1.7;
+/* MESAJ */
+#message{
+    display:none;
+    font-size:22px;
+    margin:20px;
 }
 
-/* İMZA */
+/* SON */
 .footer{
-    margin-top:50px;
-    padding:25px;
-    font-size:14px;
+    margin:30px 10px;
+    font-size:13px;
     opacity:.85;
 }
 .footer span{
@@ -130,15 +106,14 @@ button{
 <body>
 
 <div id="intro">
-    <h1 id="typeText"></h1>
+    <h1>💖 Hoş geldin aşkım 💖</h1>
+    <p>Bu sayfa senin için hazırlandı…</p>
 </div>
 
-<h1>❤️ Sedanur & Bilal ❤️</h1>
-
-<div class="love-letter type-on-scroll">
+<div class="love-letter">
 Sedanur…  
-Bu sayfada yazan her kelime, kalbimde sana ait.  
-Gülüşünle güzelleşen günlerim, sesinle huzur bulan kalbim var.  
+Bu siteyi yaparken her satırına sevgimi koydum.  
+Fotoğraflarımız, kelimelerim ve kalbim burada.  
 İyi ki varsın, iyi ki benimlesin ❤️
 </div>
 
@@ -149,124 +124,45 @@ Gülüşünle güzelleşen günlerim, sesinle huzur bulan kalbim var.
 <button onclick="toggleMusic()">🎵 Müzik Aç / Kapat</button>
 
 <div class="gallery">
-
-<div class="card">
-<img src="img1.jpg">
-<p class="type-on-scroll">Kalbim seni seçti… çünkü başka hiçbir yerde bu kadar huzur bulmadım.</p>
-</div>
-
-<div class="card">
-<img src="img2.jpg">
-<p class="type-on-scroll">Gülüşün, en karanlık günlerimi bile aydınlatmaya yetiyor.</p>
-</div>
-
-<div class="card">
-<img src="img3.jpg">
-<p class="type-on-scroll">Adını kalbime yazdım, silinmesin diye her gün yeniden sevdim.</p>
-</div>
-
-<div class="card">
-<img src="img4.jpg">
-<p class="type-on-scroll">Sen benim sadece bugünüm değil, yarınım, hayalim, umudumsun.</p>
-</div>
-
-<div class="card">
-<img src="img5.jpg">
-<p class="type-on-scroll">Yanımda olman yeter… gerisi zaten kendiliğinden güzel.</p>
-</div>
-
-<div class="card">
-<img src="img6.jpg">
-<p class="type-on-scroll">Aşk sensin… başka bir tarifi yok.</p>
-</div>
-
-<div class="card">
-<img src="img7.jpg">
-<p class="type-on-scroll">Her sabah yeniden seni seçecek kadar çok seviyorum.</p>
-</div>
-
-<div class="card">
-<img src="img8.jpg">
-<p class="type-on-scroll">Kalbimin attığı her yerde sen varsın.</p>
-</div>
-
-<div class="card">
-<img src="img9.jpg">
-<p class="type-on-scroll">Bir ömür sen… başka bir dileğim yok.</p>
-</div>
-
-</div>
-
-<div class="final-text type-on-scroll">
-Bu site burada bitiyor olabilir…  
-Ama sana olan sevgim, her gün biraz daha büyüyerek devam ediyor.  
-İyi ki varsın ❤️
+    <div class="card"><img src="img1.jpg"><p>Kalbim seni seçti.</p></div>
+    <div class="card"><img src="img2.jpg"><p>Gülüşün huzurum.</p></div>
+    <div class="card"><img src="img3.jpg"><p>Adın kalbimde.</p></div>
+    <div class="card"><img src="img4.jpg"><p>Sen benim iyi ki’msin.</p></div>
+    <div class="card"><img src="img5.jpg"><p>Yanımda olman yeter.</p></div>
+    <div class="card"><img src="img6.jpg"><p>Aşk sensin.</p></div>
+    <div class="card"><img src="img7.jpg"><p>Her gün seni seçerim.</p></div>
+    <div class="card"><img src="img8.jpg"><p>Kalbim sende.</p></div>
+    <div class="card"><img src="img9.jpg"><p>Bir ömür sen.</p></div>
 </div>
 
 <button onclick="showLove()">💖 Beni seviyorsan buraya tıkla 💖</button>
 
-<div id="message" style="display:none;font-size:26px;">
-Seni çok seviyorum ❤️
-</div>
+<div id="message">Seni çok seviyorum ❤️</div>
 
 <div class="footer">
 <span>Abdurrahman Demir</span> tarafından sevgiyle yapıldı 💖
 </div>
 
 <script>
-/* TYPEWRITER AÇILIŞ */
-const introText="💖 Hoş geldin aşkım 💖";
-let it=0;
-function typeIntro(){
-    if(it<introText.length){
-        document.getElementById("typeText").innerHTML+=introText.charAt(it);
-        it++;
-        setTimeout(typeIntro,90);
-    }
-}
-typeIntro();
-
-/* KALP PARÇACIKLARI */
-setInterval(()=>{
-    const h=document.createElement("div");
-    h.className="heart";
-    h.innerHTML="💖";
-    h.style.left=Math.random()*100+"vw";
-    h.style.fontSize=(14+Math.random()*10)+"px";
-    h.style.animationDuration=(6+Math.random()*4)+"s";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),10000);
-},600);
-
 /* MÜZİK */
 const music=document.getElementById("music");
 function toggleMusic(){
     music.paused ? music.play() : music.pause();
 }
 
-/* SCROLL TYPEWRITER */
-const elements=document.querySelectorAll(".type-on-scroll");
-const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-        if(e.isIntersecting && !e.target.dataset.done){
-            e.target.dataset.done=true;
-            const text=e.target.innerText;
-            e.target.innerText="";
-            let i=0;
-            const interval=setInterval(()=>{
-                e.target.innerText+=text.charAt(i);
-                i++;
-                if(i>=text.length) clearInterval(interval);
-            },35);
-        }
-    });
-},{threshold:.4});
-elements.forEach(el=>obs.observe(el));
-
-/* BUTON */
+/* MESAJ */
 function showLove(){
     document.getElementById("message").style.display="block";
 }
+
+/* HAFİF FADE-IN */
+const cards=document.querySelectorAll(".card");
+const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add("show");
+    });
+},{threshold:.2});
+cards.forEach(c=>obs.observe(c));
 </script>
 
 </body>
