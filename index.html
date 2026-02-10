@@ -73,15 +73,12 @@ body{
     margin-top:8px;
 }
 
-/* BUTON */
-button{
-    margin:18px;
-    padding:14px 26px;
-    font-size:16px;
-    border:none;
-    border-radius:28px;
-    background:#ff2e63;
-    color:white;
+/* AUDIO */
+audio{
+    width:90%;
+    max-width:320px;
+    margin:20px auto;
+    border-radius:30px;
 }
 
 /* MESAJ */
@@ -111,17 +108,17 @@ button{
 </div>
 
 <div class="love-letter">
-Sedanur…  
-Bu siteyi yaparken her satırına sevgimi koydum.  
-Fotoğraflarımız, kelimelerim ve kalbim burada.  
+Sedanur…<br><br>
+Bu siteyi yaparken her satırına sevgimi koydum.<br>
+Fotoğraflarımız, kelimelerim ve kalbim burada.<br><br>
 İyi ki varsın, iyi ki benimlesin ❤️
 </div>
 
-<audio id="music" loop>
+<!-- 🎵 MÜZİK – %100 ÇALIŞIR -->
+<audio controls loop>
     <source src="music.mp3" type="audio/mpeg">
+    Tarayıcınız müziği desteklemiyor.
 </audio>
-
-<button onclick="toggleMusic()">🎵 Müzik Aç / Kapat</button>
 
 <div class="gallery">
     <div class="card"><img src="img1.jpg"><p>Kalbim seni seçti.</p></div>
@@ -135,7 +132,9 @@ Fotoğraflarımız, kelimelerim ve kalbim burada.
     <div class="card"><img src="img9.jpg"><p>Bir ömür sen.</p></div>
 </div>
 
-<button onclick="showLove()">💖 Beni seviyorsan buraya tıkla 💖</button>
+<button onclick="document.getElementById('message').style.display='block'">
+💖 Beni seviyorsan buraya tıkla 💖
+</button>
 
 <div id="message">Seni çok seviyorum ❤️</div>
 
@@ -144,17 +143,6 @@ Fotoğraflarımız, kelimelerim ve kalbim burada.
 </div>
 
 <script>
-/* MÜZİK */
-const music=document.getElementById("music");
-function toggleMusic(){
-    music.paused ? music.play() : music.pause();
-}
-
-/* MESAJ */
-function showLove(){
-    document.getElementById("message").style.display="block";
-}
-
 /* HAFİF FADE-IN */
 const cards=document.querySelectorAll(".card");
 const obs=new IntersectionObserver(entries=>{
